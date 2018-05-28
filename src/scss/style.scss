@@ -1,0 +1,49 @@
+$bg-color: green;
+$color: black;
+
+html,body{
+  background: $bg-color;
+  color:$color;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map {
+  height: 100%;
+  margin-left: 25%;
+  overflow: visible;
+}
+
+h1 {
+  text-align: center;
+}
+
+.sidebar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: green;
+  height: 100%;
+  position: fixed;
+}
+
+
+ul {
+  list-style-type: none;
+  display: block;
+  color: #orange;
+  text-decoration: none;
+  -webkit-padding-start: 0px;
+}
+
+li {
+  padding: 8px 0px;
+}
+
+
+li:hover:not(.active) {
+  background-color: blue;
+  color: grey;
+}

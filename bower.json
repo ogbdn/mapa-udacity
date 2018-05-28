@@ -1,0 +1,27 @@
+{
+  "name": "mapa-udacity",
+  "homepage": "https://github.com/ogbdn/mapa-udacity",
+  "authors": [
+    "Othon G. Nin <othon.nin@gmail.com>"
+  ],
+  "description": "Mapa da Udacity",
+  "main": "",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.3.1",
+    "knockout": "^3.4.2"
+  },
+  "devDependencies": {
+    "jquery": "^3.3.1",
+    "knockout": "^3.4.2",
+    "gulp": "^4.0.0"
+  }
+}
