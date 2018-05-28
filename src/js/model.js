@@ -1,4 +1,5 @@
 var map;
+var infowindow;
 var academia = {
   position: {
     lat: -22.9841088,

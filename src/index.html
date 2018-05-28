@@ -7,8 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Projeto Mapa do Bairro</title>
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script> -->
+  <script src="../bower_components/knockout/dist/knockout.js"></script>
 </head>
 
 <body>
@@ -22,7 +24,7 @@
     <input id="filter" type="text" data-bind="textInput: filter" />
 
     <ul data-bind="foreach: visiblePlaces">
-      <li data-bind="text: title"></li>
+      <li data-bind="text: title, click: $parent.openInfo"></li>
     </ul>
   </div>
 

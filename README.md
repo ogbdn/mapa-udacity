@@ -264,7 +264,7 @@ function populateInfowindow(marker, infowindow, map, lat, lng) {
   var self = this;
 
   //Requisição na API do forsquare:https://developer.foursquare.com/
-  
+
   $.ajax({
     type: "GET",
     url: url_4s,
@@ -335,6 +335,8 @@ function ViewModel() {
 
 
           return place;
+        }else {
+          self.marcadores()[place.id].setVisible(false;
         }
       });
   }, this);
@@ -344,6 +346,26 @@ function ViewModel() {
 ko.applyBindings(new ViewModel());
 
 ```
+
+### 6) Clicar em ítem da lista, abrir infowindow e animar o Marcador.
+6.1 Declarar a função para animar o infowindow em `map.js`:
+```
+function toggleBounce(marker) {
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+  marker.setAnimation(null);
+};
+```
+
+6.2 Decrarar this.openInfo em `app.js` para abrir e colocar informação na infowindow ao clicar em um local da lista:
+```
+this.openInfo = function (data) {
+  populateInfowindow(self.marcadores()[data.id],infowindow, map, data.position.lat, data.position.lng);
+  toggleBounce(self.marcadores()[data.id]); //Animar o marcador.
+};
+```
+*Obs: Para termos acesso à variável infowindow em populateInfowindow(), ela teve de ser declarada globalmente no arquivo model.js e inicializada dentro de `initMap()`.
+
+6.3 Incluir `click:$parent.openInfo"` em `index.html` na tag li: `data-bind="text: title, click: $parent.openInfo"`
 ___
 ### SCSS:
 Incluir link em index.html para o arquivo style.css `<link rel="stylesheet" type="text/css" href="css/style.css">`

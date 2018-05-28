@@ -12,7 +12,7 @@ function ViewModel() {
 
     self.marcadores()
       .forEach(function (marcador) {
-        marcador.setVisible(false);
+        marcador.setVisible(true);
       });
 
     return this.places()
@@ -21,14 +21,22 @@ function ViewModel() {
         if (!self.filter() || place.title.toLowerCase()
           .indexOf(self.filter()
             .toLowerCase()) !== -1) {
-          //  console.log(self.marcadores()[place.id].setVisible(true))
-
-
+          //  console.log(self.marcadores()[place.id].setVisible(true)
           return place;
+        } else {
+          self.marcadores()[place.id].setVisible(false);
         }
       });
   }, this);
+  //marker, lat, lng
+  this.openInfo = function (data) {
+    console.log("Funcionoooou!!!")
+    populateInfowindow(self.marcadores()[data.id], infowindow, map, data.position.lat, data.position.lng);
+    toggleBounce(self.marcadores()[data.id]); //Animar o marcador.
+  };
 
 }
+
+
 
 ko.applyBindings(new ViewModel());

@@ -131,17 +131,22 @@ function initMap() {
       }
     ]
   });
-
+  infowindow = new google.maps.InfoWindow();
   setMarkers(map);
 
+
+
 }; // Fecha initMap()
+
+function toggleBounce(marker) {
+  marker.setAnimation(google.maps.Animation.BOUNCE);
+  marker.setAnimation(null);
+};
 
 function setMarkers(map) {
 
   // adiciona marcadores ao mapa.
-  var infowindow = new google.maps.InfoWindow(
 
-  );
   var bounds = new google.maps.LatLngBounds();
 
   for (var i = 0; i < locations.length; i++) {
@@ -164,6 +169,7 @@ function setMarkers(map) {
     marker.addListener('click', (function (marker, infowindow, map, lat, lng) {
       return function () {
         populateInfowindow(this, infowindow, map, lat, lng);
+        toggleBounce(this); //Animar o marcador.
       }
     })(this, infowindow, map, lat, lng));
 
