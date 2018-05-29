@@ -1,49 +1,78 @@
-$bg-color: green;
-$color: black;
+$bg-color: #111;
+$color: #818181;
+$break-small: 320px;
 
+//
 html,body{
+  font-family: "Lato", sans-serif;
   background: $bg-color;
-  color:$color;
   height: 100%;
   margin: 0;
   padding: 0;
-}
 
+}
+//
 #map {
   height: 100%;
-  margin-left: 25%;
+  // margin-left: 25%;
   overflow: visible;
 }
-
+//
 h1 {
+  color: $color;
+  padding: 8px 8px 8px 5px;
   text-align: center;
 }
-
-.sidebar {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 25%;
-  background-color: green;
-  height: 100%;
-  position: fixed;
+label {
+  color: $color;
+  padding: 8px 8px 8px 5px;
+  margin-right: 10px;
 }
 
-
-ul {
-  list-style-type: none;
+.filtro{
   display: block;
-  color: #orange;
-  text-decoration: none;
-  -webkit-padding-start: 0px;
-}
-
-li {
-  padding: 8px 0px;
+  transition: 0.5s;
+  padding: 8px 8px 8px 5px;
 }
 
 
-li:hover:not(.active) {
-  background-color: blue;
-  color: grey;
+.sidenav {
+    list-style-type: none;
+    height: 100%;
+    width: 25%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+
+}
+
+.side_content{
+    text-decoration: none;
+    padding: 8px 8px 8px 5px;
+    color: $color
+    display: block;
+    transition: 0.3s;
+}
+
+.side_content:hover {
+    color: #f1f1f1;
+    cursor:pointer;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+
+@media (max-width: $break-small) {
+    html { font-size: 9px; }
 }

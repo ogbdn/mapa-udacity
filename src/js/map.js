@@ -183,23 +183,20 @@ function setMarkers(map) {
 
 function populateInfowindow(marker, infowindow, map, lat, lng) {
   var url_4s = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," + lng + "&client_id=ZLMF5SI2BWP4BRSI1GVTTTAZK0QSS5DRKGSWUG4UJN1FYHYU" + "&client_secret=UEEQAYHGSNZ0PO1I5LHQW0LN5BCMPYZPGL2CK0SKIHOILEEO" + "&v=20180523" + "&limit=1";
-  var url_street_view = "https://maps.googleapis.com/maps/api/streetview?size=400x400&location=" + lat + "," + lng + "&fov=90&heading=235&pitch=10&key=AIzaSyAiHBSeyuSse7tQctfsNL-L-xk6gFAUIWY";
+  var url_street_view = "https://maps.googleapis.com/maps/api/streetview?size=200x200&location=" + lat + "," + lng + "&fov=90&heading=235&pitch=10&key=AIzaSyAiHBSeyuSse7tQctfsNL-L-xk6gFAUIWY";
   var self = this;
 
   $.ajax({
     type: "GET",
     url: url_4s,
     success: function (result) {
-      console.log(result);
       var venue_name = result.response.venues[0].name;
       var venues_address = result.response.venues[0].location.address;
-      console.log(venue_name);
-      console.log(venues_address);
       infowindow.setContent("<img src='" + url_street_view + "'>" + "<h1>" + venue_name + "</h1>" + "<h2>" + venues_address + "</h2>");
 
     },
     error: function (jq, status, message) {
-      infowindow.setContent('A jQuery error has occurred. Status: ' + status);
+      infowindow.setContent('Não foi possível mostrar informações neste momento. Tente novamente em alguns minutos.' + status);
     }
 
   }); //Fecha AJAX
@@ -208,5 +205,4 @@ function populateInfowindow(marker, infowindow, map, lat, lng) {
   infowindow.addListener('closeclick', function () {
     infowindow.setMarker = null;
   }); // Fecha infowindow.addListener
-  console.log("Executou populate");
 }; // Fecha função populateInfowindow()
