@@ -31,6 +31,8 @@ function ViewModel() {
   this.openInfo = function (data) {
     populateInfowindow(self.marcadores()[data.id], infowindow, map, data.position.lat, data.position.lng);
     toggleBounce(self.marcadores()[data.id]); //Animar o marcador.
+    closeNav();
+    map.panTo(new google.maps.LatLng(data.position.lat, data.position.lng));
   };
 
 }

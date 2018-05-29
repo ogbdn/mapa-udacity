@@ -66,6 +66,12 @@ label {
   margin-left: 50px;
 }
 
+.infowindow-class {
+  background-color: green;
+  text-align: center;
+  color: black;
+}
+
 /*tamanho máximo da tela 600px*/
 
 @media (max-width: 600px) {

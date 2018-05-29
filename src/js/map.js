@@ -170,6 +170,7 @@ function setMarkers(map) {
       return function () {
         populateInfowindow(this, infowindow, map, lat, lng);
         toggleBounce(this); //Animar o marcador.
+        map.panTo(new google.maps.LatLng(lat, lng));
       }
     })(this, infowindow, map, lat, lng));
 
@@ -183,7 +184,7 @@ function setMarkers(map) {
 
 function populateInfowindow(marker, infowindow, map, lat, lng) {
   var url_4s = "https://api.foursquare.com/v2/venues/search?ll=" + lat + "," + lng + "&client_id=ZLMF5SI2BWP4BRSI1GVTTTAZK0QSS5DRKGSWUG4UJN1FYHYU" + "&client_secret=UEEQAYHGSNZ0PO1I5LHQW0LN5BCMPYZPGL2CK0SKIHOILEEO" + "&v=20180523" + "&limit=1";
-  var url_street_view = "https://maps.googleapis.com/maps/api/streetview?size=200x200&location=" + lat + "," + lng + "&fov=90&heading=235&pitch=10&key=AIzaSyAiHBSeyuSse7tQctfsNL-L-xk6gFAUIWY";
+  var url_street_view = "https://maps.googleapis.com/maps/api/streetview?size=300x300&location=" + lat + "," + lng + "&fov=90&heading=235&pitch=10&key=AIzaSyAiHBSeyuSse7tQctfsNL-L-xk6gFAUIWY";
   var self = this;
 
   $.ajax({
@@ -192,7 +193,7 @@ function populateInfowindow(marker, infowindow, map, lat, lng) {
     success: function (result) {
       var venue_name = result.response.venues[0].name;
       var venues_address = result.response.venues[0].location.address;
-      infowindow.setContent("<img src='" + url_street_view + "'>" + "<h1>" + venue_name + "</h1>" + "<h2>" + venues_address + "</h2>");
+      infowindow.setContent("<div class='infowindow-class'><img src='" + url_street_view + "'>" + "<h2>" + venue_name + "</h2>" + "<h2>" + venues_address + "</h2></div>");
 
     },
     error: function (jq, status, message) {
@@ -206,3 +207,14 @@ function populateInfowindow(marker, infowindow, map, lat, lng) {
     infowindow.setMarker = null;
   }); // Fecha infowindow.addListener
 }; // Fecha função populateInfowindow()
+
+function openNav() {
+  document.getElementById("mySidenav")
+    .style.width = "320px";
+
+}
+
+function closeNav() {
+  document.getElementById("mySidenav")
+    .style.width = "0";
+}
